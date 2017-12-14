@@ -471,6 +471,7 @@ class SyncApp(object):
             os.rename(temp_db_path, session.get_collection_path())
         finally:
             col.reopen()
+            col.load()
 
         # If everything went fine, run hook_upload if one is defined.
         if self.hook_upload is not None:
@@ -488,6 +489,7 @@ class SyncApp(object):
             data = open(session.get_collection_path(), 'rb').read()
         finally:
             col.reopen()
+            col.load()
         return data
 
     @wsgify
