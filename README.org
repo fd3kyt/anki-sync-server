@@ -1,0 +1,10 @@
+#+TITLE:README
+#+OPTIONS: ^:nil toc:nil
+
+* setup
+#+BEGIN_SRC bash :results outptut drawer
+pip install webob PasteDeploy PasteScript sqlalchemy simplejson
+pip install -e .
+cp example.ini ./production.ini
+# verify: open http://127.0.0.1:27701/sync
+#+END_SRC
