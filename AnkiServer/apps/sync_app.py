@@ -72,20 +72,15 @@ class SyncCollectionHandler(Syncer):
         version_int = [ int(str(x).translate(None, string.ascii_letters))
                         for x in version.split('.') ]
 
-        # Some insanity added in Anki 2.0.13
-        if (client == 'ankidroid' and version_int[0] >=2 and version_int[1] >= 3) \
-        or (client == 'ankidesktop' and version_int[0] >= 2 and version_int[1] >= 0 and version_int[2] >= 13):
-            return {
-              'scm': self.col.scm,
-              'ts': intTime(),
-              'mod': self.col.mod,
-              'usn': self.col._usn,
-              'musn': self.col.media.lastUsn(),
-              'msg': '',
-              'cont': True,
-            }
-        else:
-            return (self.col.mod, self.col.scm, self.col._usn, intTime(), self.col.media.lastUsn())
+        return {
+            'scm': self.col.scm,
+            'ts': intTime(),
+            'mod': self.col.mod,
+            'usn': self.col._usn,
+            'musn': self.col.media.lastUsn(),
+            'msg': '',
+            'cont': True,
+        }
 
 class SyncMediaHandler(MediaSyncer):
     operations = ['begin', 'mediaChanges', 'mediaSanity', 'mediaList', 'uploadChanges', 'downloadFiles']
