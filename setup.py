@@ -35,7 +35,6 @@ setup(
     data_files=get_anki_bundled_files()+[
         ('examples', [
             'example.ini',
-            'logging.conf',
             'supervisor-anki-server.conf',
         ]),
     ],
